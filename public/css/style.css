@@ -473,3 +473,81 @@ body {
   font-size: 12px;
   color: #6b6b6b;
 }
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+
+  .nav {
+    padding: 0 1rem;
+    flex-wrap: wrap;
+    height: auto;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    gap: 10px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    max-height: none;
+  }
+
+  .hero-left {
+    padding: 3rem 1.5rem;
+  }
+
+  .hero-title {
+    font-size: 36px;
+  }
+
+  .hero-right {
+    padding: 2rem 1.5rem;
+  }
+
+  .stats-bar {
+    flex-wrap: wrap;
+    padding: 0 1rem;
+  }
+
+  .stat-item {
+    flex: 1 1 45%;
+    padding: 1rem 0.5rem;
+    border-right: none;
+    border-bottom: 0.5px solid #e5e3dc;
+  }
+
+  .dash-wrap {
+    padding: 1.5rem 1rem;
+  }
+
+  .dash-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .course-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .auth-card {
+    max-width: 100% !important;
+  }
+
+  .two-col {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .footer {
+    padding: 1.5rem 1rem;
+  }
+}
