@@ -14,7 +14,7 @@ if (!token) {
 }
 
 if (role !== 'super_admin') {
-    window.location.href = 'dashboard.html';
+    window.location.href = 'login.html';
 }
 
 logoutBtn.addEventListener('click', () => {
