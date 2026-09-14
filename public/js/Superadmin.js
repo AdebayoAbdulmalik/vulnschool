@@ -1,6 +1,3 @@
-// Super admin panel — stripped down to user overview only.
-// Shows total students, total admins, total users, and a list
-// of all users with quick promote/demote buttons.
 
 const totalStudentsEl = document.getElementById('total-students');
 const totalAdminsEl = document.getElementById('total-admins');
@@ -9,6 +6,16 @@ const userListEl = document.getElementById('user-list');
 const promoteError = document.getElementById('promote-error');
 const promoteSuccess = document.getElementById('promote-success');
 const logoutBtn = document.getElementById('logout-btn');
+const token = localStorage.getItem('token');
+const role = localStorage.getItem('role');
+
+if (!token) {
+    window.location.href = 'login.html';
+}
+
+if (role !== 'super_admin') {
+    window.location.href = 'dashboard.html';
+}
 
 logoutBtn.addEventListener('click', () => {
     localStorage.removeItem('token');

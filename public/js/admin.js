@@ -7,6 +7,16 @@ const studentListEl = document.getElementById('admin-student-list');
 const assignResultBtn = document.getElementById('assign-result-btn');
 const resultErrorEl = document.getElementById('result-error');
 const logoutBtn = document.getElementById('logout-btn');
+const token = localStorage.getItem('token');
+const role = localStorage.getItem('role');
+
+if (!token) {
+    window.location.href = 'login.html';
+}
+
+if (role !== 'admin' && role !== 'super_admin') {
+    window.location.href = 'dashboard.html';
+}
 
 logoutBtn.addEventListener('click', () => {
     localStorage.removeItem('token');
