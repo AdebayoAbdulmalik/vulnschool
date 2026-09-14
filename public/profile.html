@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profile — VulnSchool</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="page">
+  <nav class="nav">
+    <div class="nav-logo">
+      <svg class="crest" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="44" height="44" rx="8" fill="#1D3A5F"/>
+        <polygon points="22,6 27,16 38,16 29,23 32,34 22,27 12,34 15,23 6,16 17,16" fill="none" stroke="#C6942A" stroke-width="1.4"/>
+        <circle cx="22" cy="22" r="5" fill="none" stroke="#C6942A" stroke-width="1.2"/>
+      </svg>
+      <div class="nav-brand">
+        <span class="nav-brand-name">VulnSchool</span>
+        <span class="nav-brand-sub">Student Portal</span>
+      </div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="dashboard.html">Courses</a></li>
+      <li><a href="results.html">Results</a></li>
+      <li><a href="profile.html">Profile</a></li>
+      <li><a href="admin.html" id="admin-link" style="display:none;">Admin</a></li>
+    </ul>
+    <button class="nav-cta" id="logout-btn">Log Out</button>
+  </nav>
+
+  <div class="dash-wrap">
+    <div class="dash-header">
+      <p class="dash-title">My profile</p>
+    </div>
+
+    <div id="profile-error" class="auth-error"></div>
+
+    <!-- Profile picture -->
+    <div class="auth-card" style="max-width:480px; margin-bottom:1.5rem;">
+      <p class="auth-title" style="font-size:16px; margin-bottom:12px;">Profile picture</p>
+      <img id="profile-pic" src="" alt="Profile picture"
+        style="width:80px;height:80px;border-radius:50%;object-fit:cover;border:2px solid #e5e3dc;margin-bottom:12px;display:none;">
+      <br>
+      <input type="file" id="pic-input" style="font-size:13px; margin-bottom:10px;">
+      <button class="auth-submit" id="upload-btn">Upload picture</button>
+      <p id="upload-msg" style="font-size:12px;color:#6b6b6b;margin-top:8px;display:none;"></p>
+    </div>
+
+    <!-- Profile details -->
+    <div class="auth-card" style="max-width:480px;">
+      <label class="field-label">Full name</label>
+      <input class="field-input" type="text" id="name">
+
+      <label class="field-label">Email</label>
+      <input class="field-input" type="text" id="email">
+
+      <label class="field-label">Bio</label>
+      <textarea class="field-input" id="bio" rows="3"
+        placeholder="Tell us about yourself..."></textarea>
+
+      <!-- Website field — this is the SSRF surface.
+           Whatever URL is saved here gets fetched server-side
+           by the /api/students/:id/preview endpoint -->
+      <label class="field-label">Website URL</label>
+      <input class="field-input" type="text" id="website"
+        placeholder="https://yoursite.com">
+
+      <label class="field-label">Role</label>
+      <input class="field-input" type="text" id="role" disabled>
+
+      <button class="auth-submit" id="save-btn">Save changes</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/profile.js"></script>
+</body>
+</html>

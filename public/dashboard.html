@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard — VulnSchool</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="page">
+  <nav class="nav">
+    <div class="nav-logo">
+      <svg class="crest" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="44" height="44" rx="8" fill="#1D3A5F"/>
+        <polygon points="22,6 27,16 38,16 29,23 32,34 22,27 12,34 15,23 6,16 17,16" fill="none" stroke="#C6942A" stroke-width="1.4"/>
+        <circle cx="22" cy="22" r="5" fill="none" stroke="#C6942A" stroke-width="1.2"/>
+      </svg>
+      <div class="nav-brand">
+        <span class="nav-brand-name">VulnSchool</span>
+        <span class="nav-brand-sub">Student Portal</span>
+      </div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="dashboard.html">Courses</a></li>
+      <li><a href="profile.html">Profile</a></li>
+      <li><a href="admin.html" id="admin-link" style="display:none;">Admin</a></li>
+      <li><a href="results.html">Results</a></li>
+    </ul>
+    <button class="nav-cta" id="logout-btn">Log Out</button>
+  </nav>
+
+  <div class="dash-wrap">
+    <div class="dash-header">
+      <p class="dash-title">Available courses</p>
+      <span class="role-badge" id="role-badge">student</span>
+    </div>
+
+    <div id="course-error" class="auth-error"></div>
+    <div id="course-list"></div>
+  </div>
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>

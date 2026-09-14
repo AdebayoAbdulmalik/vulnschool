@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SOC Dashboard — VulnSchool</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .soc-wrap { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .soc-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
+  .soc-title { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; }
+  .soc-sub { font-size: 13px; color: #6b6b6b; margin-top: 4px; }
+
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 2rem; }
+  .stat-card { background: #fff; border: 0.5px solid #e5e3dc; border-radius: 10px; padding: 1.25rem; }
+  .stat-card-number { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; color: #1D3A5F; }
+  .stat-card-label { font-size: 12px; color: #6b6b6b; margin-top: 4px; }
+  .stat-card.danger .stat-card-number { color: #b3261e; }
+
+  .section-title { font-size: 15px; font-weight: 600; margin-bottom: 1rem; }
+
+  .alert-row { background: #fff; border: 0.5px solid #f5c6c6; border-radius: 8px; padding: 12px 16px; margin-bottom: 8px; }
+  .alert-row.high { border-color: #b3261e; background: #fff8f8; }
+  .alert-method { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; margin-right: 8px; background: #E6F1FB; color: #0C447C; }
+  .alert-path { font-size: 13px; font-weight: 500; }
+  .alert-meta { font-size: 12px; color: #6b6b6b; margin-top: 4px; }
+  .threat-pill { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 4px; background: #FCEBEB; color: #791F1F; margin-right: 4px; margin-top: 4px; }
+
+  .log-row { background: #fff; border: 0.5px solid #e5e3dc; border-radius: 8px; padding: 10px 14px; margin-bottom: 6px; display: flex; justify-content: space-between; align-items: center; }
+  .log-path { font-size: 13px; font-weight: 500; }
+  .log-meta { font-size: 12px; color: #6b6b6b; }
+  .status-ok { color: #27500A; }
+  .status-warn { color: #7A4700; }
+  .status-err { color: #b3261e; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem; }
+  .panel { background: #fff; border: 0.5px solid #e5e3dc; border-radius: 10px; padding: 1.25rem; }
+
+  .ip-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 0.5px solid #f0ede6; font-size: 13px; }
+  .ip-row:last-child { border-bottom: none; }
+  .ip-count { font-weight: 600; color: #1D3A5F; }
+  .ip-brute { color: #b3261e; font-weight: 600; }
+
+  .login-card { background: #fff; border: 0.5px solid #e5e3dc; border-radius: 10px; padding: 1.5rem; max-width: 360px; margin: 4rem auto; }
+  .refresh-btn { font-size: 13px; padding: 8px 16px; background: #1D3A5F; color: #fff; border: none; border-radius: 6px; cursor: pointer; }
+  .auto-refresh { font-size: 12px; color: #6b6b6b; margin-left: 10px; }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <nav class="nav">
+    <div class="nav-logo">
+      <svg class="crest" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="44" height="44" rx="8" fill="#1D3A5F"/>
+        <polygon points="22,6 27,16 38,16 29,23 32,34 22,27 12,34 15,23 6,16 17,16" fill="none" stroke="#C6942A" stroke-width="1.4"/>
+        <circle cx="22" cy="22" r="5" fill="none" stroke="#C6942A" stroke-width="1.2"/>
+      </svg>
+      <div class="nav-brand">
+        <span class="nav-brand-name">VulnSchool</span>
+        <span class="nav-brand-sub">SOC Dashboard</span>
+      </div>
+    </div>
+    <button class="nav-cta" id="logout-soc">Log Out</button>
+  </nav>
+
+  <!-- Login gate -->
+  <div id="soc-login" style="display:none;">
+    <div class="login-card">
+      <p class="auth-title">SOC Access</p>
+      <p class="auth-sub">Enter your SOC password to continue</p>
+      <label class="field-label">SOC Password</label>
+      <input class="field-input" type="password" id="soc-password-input">
+      <p class="auth-error" id="soc-login-error"></p>
+      <button class="auth-submit" id="soc-login-btn">Access Dashboard</button>
+    </div>
+  </div>
+
+  <!-- Dashboard -->
+  <div id="soc-dashboard" style="display:none;">
+    <div class="soc-wrap">
+
+      <div class="soc-header">
+        <div>
+          <p class="soc-title">Security Operations Center</p>
+          <p class="soc-sub">VulnSchool — Live traffic monitoring and threat detection</p>
+        </div>
+        <div>
+          <button class="refresh-btn" id="refresh-btn">
+            <i class="fa-solid fa-rotate-right"></i> Refresh
+          </button>
+          <span class="auto-refresh" id="auto-refresh-label">Auto-refresh: ON</span>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <p class="stat-card-number" id="stat-total">—</p>
+          <p class="stat-card-label">Total requests</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-card-number" id="stat-ips">—</p>
+          <p class="stat-card-label">Unique IPs</p>
+        </div>
+        <div class="stat-card danger">
+          <p class="stat-card-number" id="stat-alerts">—</p>
+          <p class="stat-card-label">Total alerts</p>
+        </div>
+        <div class="stat-card danger">
+          <p class="stat-card-number" id="stat-brute">—</p>
+          <p class="stat-card-label">Brute force IPs</p>
+        </div>
+      </div>
+
+      <!-- Top endpoints + IP breakdown -->
+      <div class="two-col">
+        <div class="panel">
+          <p class="section-title">Top endpoints</p>
+          <div id="top-endpoints"></div>
+        </div>
+        <div class="panel">
+          <p class="section-title">Most active IPs</p>
+          <div id="top-ips"></div>
+        </div>
+      </div>
+
+      <!-- Alerts -->
+      <p class="section-title">Recent alerts <span style="color:#b3261e;" id="alert-count"></span></p>
+      <div id="alert-list" style="margin-bottom:2rem;"></div>
+
+      <!-- Recent requests -->
+      <p class="section-title">Recent requests</p>
+      <div id="recent-list"></div>
+
+    </div>
+  </div>
+</div>
+
+<script src="js/soc.js"></script>
+</body>
+</html>

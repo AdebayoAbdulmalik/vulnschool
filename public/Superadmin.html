@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Super Admin — VulnSchool</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="page">
+  <nav class="nav">
+    <div class="nav-logo">
+      <svg class="crest" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="44" height="44" rx="8" fill="#1D3A5F"/>
+        <polygon points="22,6 27,16 38,16 29,23 32,34 22,27 12,34 15,23 6,16 17,16" fill="none" stroke="#C6942A" stroke-width="1.4"/>
+        <circle cx="22" cy="22" r="5" fill="none" stroke="#C6942A" stroke-width="1.2"/>
+      </svg>
+      <div class="nav-brand">
+        <span class="nav-brand-name">VulnSchool</span>
+        <span class="nav-brand-sub">Super Admin</span>
+      </div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="dashboard.html">Courses</a></li>
+      <li><a href="admin.html">Admin</a></li>
+      <li><a href="soc.html">SOC</a></li>
+    </ul>
+    <button class="nav-cta" id="logout-btn">Log Out</button>
+  </nav>
+
+  <div class="dash-wrap">
+
+    <div class="dash-header">
+      <p class="dash-title">User overview</p>
+      <span class="role-badge" style="background:#f0e6fb;color:#4a0080;">super_admin</span>
+    </div>
+
+    <!-- Stats -->
+    <div style="display:flex;gap:1rem;margin-bottom:2rem;">
+      <div class="auth-card" style="max-width:180px;text-align:center;padding:1.25rem;">
+        <p style="font-family:'Playfair Display',serif;font-size:36px;font-weight:700;color:#1D3A5F;" id="total-students">—</p>
+        <p style="font-size:12px;color:#6b6b6b;">Total students</p>
+      </div>
+      <div class="auth-card" style="max-width:180px;text-align:center;padding:1.25rem;">
+        <p style="font-family:'Playfair Display',serif;font-size:36px;font-weight:700;color:#C6942A;" id="total-admins">—</p>
+        <p style="font-size:12px;color:#6b6b6b;">Total admins</p>
+      </div>
+      <div class="auth-card" style="max-width:180px;text-align:center;padding:1.25rem;">
+        <p style="font-family:'Playfair Display',serif;font-size:36px;font-weight:700;color:#4a0080;" id="total-users">—</p>
+        <p style="font-size:12px;color:#6b6b6b;">Total users</p>
+      </div>
+    </div>
+
+    <!-- Promote/demote -->
+    <div id="promote-error" class="auth-error"></div>
+    <div id="promote-success" class="auth-error" style="color:#27500A;background:#EAF3DE;border-color:#c3e6a0;display:none;"></div>
+
+    <!-- All users -->
+    <div class="dash-header">
+      <p class="dash-title">All users</p>
+    </div>
+    <div id="user-list"></div>
+
+  </div>
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/superadmin.js"></script>
+</body>
+</html>

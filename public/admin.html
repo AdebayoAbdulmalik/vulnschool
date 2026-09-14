@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — VulnSchool</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="page">
+  <nav class="nav">
+    <div class="nav-logo">
+      <svg class="crest" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="44" height="44" rx="8" fill="#1D3A5F"/>
+        <polygon points="22,6 27,16 38,16 29,23 32,34 22,27 12,34 15,23 6,16 17,16" fill="none" stroke="#C6942A" stroke-width="1.4"/>
+        <circle cx="22" cy="22" r="5" fill="none" stroke="#C6942A" stroke-width="1.2"/>
+      </svg>
+      <div class="nav-brand">
+        <span class="nav-brand-name">VulnSchool</span>
+        <span class="nav-brand-sub">Student Portal</span>
+      </div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="dashboard.html">Courses</a></li>
+      <li><a href="results.html">Results</a></li>
+      <li><a href="profile.html">Profile</a></li>
+      <li><a href="admin.html">Admin</a></li>
+    </ul>
+    <button class="nav-cta" id="logout-btn">Log Out</button>
+  </nav>
+
+  <div class="dash-wrap">
+
+    <!-- Create course -->
+    <div class="dash-header">
+      <p class="dash-title">Create a course</p>
+    </div>
+    <div id="create-error" class="auth-error"></div>
+    <div class="auth-card" style="max-width:480px; margin-bottom:2rem;">
+      <label class="field-label">Title</label>
+      <input class="field-input" type="text" id="c-title">
+      <label class="field-label">Code</label>
+      <input class="field-input" type="text" id="c-code">
+      <label class="field-label">Semester</label>
+      <input class="field-input" type="text" id="c-semester">
+      <label class="field-label">Capacity</label>
+      <input class="field-input" type="number" id="c-capacity">
+      <button class="auth-submit" id="create-btn">Create course</button>
+    </div>
+
+    <!-- Assign result -->
+    <div class="dash-header">
+      <p class="dash-title">Assign result</p>
+    </div>
+    <div id="result-error" class="auth-error"></div>
+    <div class="auth-card" style="max-width:480px; margin-bottom:2rem;">
+      <label class="field-label">Student ID</label>
+      <input class="field-input" type="text" id="r-student" placeholder="MongoDB ObjectId">
+      <label class="field-label">Course ID</label>
+      <input class="field-input" type="text" id="r-course" placeholder="MongoDB ObjectId">
+      <label class="field-label">Grade</label>
+      <input class="field-input" type="text" id="r-grade" placeholder="A, B, C, F">
+      <label class="field-label">Score</label>
+      <input class="field-input" type="number" id="r-score">
+      <label class="field-label">Attendance (%)</label>
+      <input class="field-input" type="number" id="r-attendance">
+      <label class="field-label">Semester</label>
+      <input class="field-input" type="text" id="r-semester">
+      <button class="auth-submit" id="assign-result-btn">Assign result</button>
+    </div>
+
+    <!-- All courses -->
+    <div class="dash-header" style="margin-top:1rem;">
+      <p class="dash-title">All courses</p>
+    </div>
+    <div id="admin-course-list"></div>
+
+    <!-- All students -->
+    <div class="dash-header" style="margin-top:2rem;">
+      <p class="dash-title">All students</p>
+    </div>
+    <div id="admin-student-list"></div>
+
+  </div>
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

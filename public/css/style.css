@@ -1,0 +1,475 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #F7F6F3;
+  min-height: 100vh;
+  color: #1a1a1a;
+}
+
+.page {
+  min-height: 100vh;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 3rem;
+  height: 68px;
+  background: #fff;
+  border-bottom: 0.5px solid #e5e3dc;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.crest {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+}
+
+.nav-brand {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-brand-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #1a1a1a;
+  line-height: 1.2;
+}
+
+.nav-brand-sub {
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  color: #6b6b6b;
+  text-transform: uppercase;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links li a {
+  font-size: 13px;
+  font-weight: 400;
+  color: #6b6b6b;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: color 0.15s;
+}
+
+.nav-links li a:hover { color: #1a1a1a; }
+
+.nav-cta {
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 20px;
+  background: #1D3A5F;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: calc(100vh - 68px);
+  max-height: 700px;
+}
+
+.hero-left {
+  padding: 5rem 3rem 5rem 3.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #fff;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #1D3A5F;
+  margin-bottom: 1.5rem;
+}
+
+.eyebrow::before {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 1.5px;
+  background: #1D3A5F;
+}
+
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 52px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: #1a1a1a;
+  margin-bottom: 0.5rem;
+}
+
+.hero-title em {
+  font-style: italic;
+  color: #C6942A;
+}
+
+.hero-subtitle {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #6b6b6b;
+  max-width: 420px;
+  margin: 1.25rem 0 2.5rem;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.btn-primary {
+  font-size: 14px;
+  font-weight: 500;
+  padding: 12px 28px;
+  background: #1D3A5F;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+}
+
+.btn-ghost {
+  font-size: 14px;
+  font-weight: 400;
+  padding: 12px 20px;
+  background: transparent;
+  color: #6b6b6b;
+  border: 0.5px solid #d8d5cc;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.hero-right {
+  background: #1D3A5F;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.programs-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 2rem;
+}
+
+.program-card {
+  background: rgba(255,255,255,0.06);
+  border: 0.5px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.program-card:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.program-card.featured {
+  background: rgba(198, 148, 42, 0.12);
+  border-color: rgba(198, 148, 42, 0.3);
+}
+
+.program-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+  font-size: 18px;
+}
+
+.program-icon.blue { background: rgba(53, 130, 220, 0.25); color: #85B7EB; }
+.program-icon.green { background: rgba(99, 153, 34, 0.25); color: #97C459; }
+.program-icon.gold { background: rgba(198, 148, 42, 0.3); color: #FAC775; }
+
+.program-name {
+  font-size: 15px;
+  font-weight: 500;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.program-desc {
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.5;
+}
+
+.program-arrow {
+  position: absolute;
+  right: 1.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255,255,255,0.25);
+  font-size: 18px;
+}
+
+.stats-bar {
+  background: #fff;
+  border-top: 0.5px solid #e5e3dc;
+  display: flex;
+  padding: 0 3.5rem;
+}
+
+.stat-item {
+  flex: 1;
+  padding: 1.75rem 0;
+  border-right: 0.5px solid #e5e3dc;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stat-item:last-child { border-right: none; padding-left: 2.5rem; }
+.stat-item:not(:first-child) { padding-left: 2.5rem; }
+
+.stat-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 600;
+  color: #1a1a1a;
+  line-height: 1;
+}
+
+.stat-number span {
+  font-size: 18px;
+  color: #C6942A;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: #6b6b6b;
+  letter-spacing: 0.03em;
+}
+
+.gold-line {
+  width: 32px;
+  height: 2px;
+  background: #C6942A;
+  margin-bottom: 4px;
+}
+
+/* Auth pages (login/register) */
+.auth-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 68px);
+  padding: 2rem;
+}
+
+.auth-card {
+  background: #fff;
+  border: 0.5px solid #e5e3dc;
+  border-radius: 12px;
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 380px;
+}
+
+.auth-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.auth-sub {
+  font-size: 13px;
+  color: #6b6b6b;
+  margin-bottom: 24px;
+}
+
+.field-label {
+  display: block;
+  font-size: 13px;
+  color: #6b6b6b;
+  margin: 14px 0 6px;
+}
+
+.field-input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 0.5px solid #d8d5cc;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+}
+
+.auth-error {
+  color: #b3261e;
+  font-size: 13px;
+  margin-top: 10px;
+  display: none;
+}
+
+.auth-submit {
+  width: 100%;
+  margin-top: 20px;
+  padding: 12px;
+  background: #1D3A5F;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.auth-switch {
+  text-align: center;
+  font-size: 13px;
+  color: #6b6b6b;
+  margin-top: 16px;
+}
+
+.auth-switch a { color: #1D3A5F; text-decoration: none; }
+
+/* Dashboard / course cards */
+.dash-wrap {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem;
+}
+
+.dash-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.dash-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.role-badge {
+  font-size: 12px;
+  background: #E6F1FB;
+  color: #0C447C;
+  padding: 4px 12px;
+  border-radius: 6px;
+}
+
+.course-row {
+  background: #fff;
+  border: 0.5px solid #e5e3dc;
+  border-radius: 8px;
+  padding: 14px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.course-title { font-size: 14px; font-weight: 500; }
+.course-meta { font-size: 12px; color: #6b6b6b; margin-top: 2px; }
+
+.course-action-btn {
+  font-size: 13px;
+  padding: 7px 16px;
+  border: 0.5px solid #d8d5cc;
+  border-radius: 6px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.status-pill {
+  font-size: 12px;
+  padding: 4px 12px;
+  border-radius: 6px;
+}
+
+.status-full { background: #FCEBEB; color: #791F1F; }
+.status-open { background: #EAF3DE; color: #27500A; }
+
+.footer {
+  background: #fff;
+  border-top: 0.5px solid #e5e3dc;
+  padding: 2rem 3rem;
+  text-align: center;
+}
+
+.footer-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.footer-desc {
+  font-size: 13px;
+  color: #6b6b6b;
+  max-width: 420px;
+  margin: 0 auto 16px;
+  line-height: 1.6;
+}
+
+.footer-socials {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.footer-socials a {
+  color: #6b6b6b;
+  font-size: 18px;
+  transition: color 0.15s;
+}
+
+.footer-socials a:hover { color: #1D3A5F; }
+
+.footer-credit {
+  font-size: 12px;
+  color: #6b6b6b;
+}
