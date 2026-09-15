@@ -3,6 +3,7 @@ dns.setServers(['8.8.8.8', '1.1.1.1']);
 
 require('dotenv').config({ path: './.env.student' });
 const express = require('express');
+const path = require('path');
 const connectDB = require('./config/db');
 
 const app = express();
@@ -16,6 +17,13 @@ const logger = require('./middleware/logger');
 app.use(logger);
 
 app.use(express.json());
+
+const pages = ['dashboard', 'login', 'register', 'profile', 'results', 'admin', 'superadmin', 'soc'];
+pages.forEach(page => {
+    app.get(`/${page}`, (req, res) => {
+        res.sendFile(path.join(__dirname, 'public', `${page}.html`));
+    });
+});
 
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/students', require('./routes/user'));
