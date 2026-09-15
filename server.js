@@ -7,11 +7,15 @@ const connectDB = require('./config/db');
 
 const app = express();
 
+app.set('trust proxy', true);
+
 connectDB();
 
-app.use(express.json());
+
 const logger = require('./middleware/logger');
 app.use(logger);
+
+app.use(express.json());
 
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/students', require('./routes/user'));
