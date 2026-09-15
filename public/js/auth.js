@@ -43,7 +43,7 @@ if (registerForm) {
 
         if (data._status === 201) {
             
-            window.location.href = 'login.html';
+            window.location.href = 'login';
         } else {
             errorEl.textContent = data.message || 'Registration failed';
             errorEl.style.display = 'block';

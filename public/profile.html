@@ -24,10 +24,10 @@
       </div>
     </div>
     <ul class="nav-links">
-      <li><a href="dashboard.html">Courses</a></li>
-      <li><a href="results.html">Results</a></li>
-      <li><a href="profile.html">Profile</a></li>
-      <li><a href="admin.html" id="admin-link" style="display:none;">Admin</a></li>
+      <li><a href="dashboard">Courses</a></li>
+      <li><a href="results">Results</a></li>
+      <li><a href="profile">Profile</a></li>
+      <li><a href="admin" id="admin-link" style="display:none;">Admin</a></li>
     </ul>
     <button class="nav-cta" id="logout-btn">Log Out</button>
   </nav>
@@ -50,7 +50,7 @@
       <p id="upload-msg" style="font-size:12px;color:#6b6b6b;margin-top:8px;display:none;"></p>
     </div>
 
-    <!-- Profile details -->
+   
     <div class="auth-card" style="max-width:480px;">
       <label class="field-label">Full name</label>
       <input class="field-input" type="text" id="name">
@@ -62,9 +62,7 @@
       <textarea class="field-input" id="bio" rows="3"
         placeholder="Tell us about yourself..."></textarea>
 
-      <!-- Website field — this is the SSRF surface.
-           Whatever URL is saved here gets fetched server-side
-           by the /api/students/:id/preview endpoint -->
+      
       <label class="field-label">Website URL</label>
       <input class="field-input" type="text" id="website"
         placeholder="https://yoursite.com">

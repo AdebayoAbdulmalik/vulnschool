@@ -11,17 +11,17 @@ const token = localStorage.getItem('token');
 const role = localStorage.getItem('role');
 
 if (!token) {
-    window.location.href = 'login.html';
+    window.location.href = 'login';
 }
 
 if (role !== 'admin' && role !== 'super_admin') {
-    window.location.href = 'login.html';
+    window.location.href = 'login';
 }
 
 logoutBtn.addEventListener('click', () => {
     localStorage.removeItem('token');
     localStorage.removeItem('role');
-    window.location.href = 'login.html';
+    window.location.href = 'login';
 });
 
 

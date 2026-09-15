@@ -10,11 +10,11 @@ const token = localStorage.getItem('token');
 const role = localStorage.getItem('role');
 
 if (!token) {
-    window.location.href = 'login.html';
+    window.location.href = 'login';
 }
 
 if (role !== 'super_admin') {
-    window.location.href = 'login.html';
+    window.location.href = 'login';
 }
 
 logoutBtn.addEventListener('click', () => {
