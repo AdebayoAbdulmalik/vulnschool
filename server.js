@@ -18,7 +18,7 @@ app.use(logger);
 
 app.use(express.json());
 
-const pages = ['dashboard', 'login', 'register', 'profile', 'results', 'admin', 'superadmin', 'soc','about', 'contact'];
+const pages = ['dashboard', 'login', 'register', 'profile', 'results', 'admin', 'superadmin', 'soc','About', 'Contact'];
 pages.forEach(page => {
     app.get(`/${page}`, (req, res) => {
         res.sendFile(path.join(__dirname, 'public', `${page}.html`));
