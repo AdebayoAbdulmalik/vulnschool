@@ -58,7 +58,7 @@ async function loadResults() {
                     ${result.course ? result.course.code : ''} ·
                     Grade: ${result.grade || 'Not graded'} ·
                     Score: ${result.score !== undefined ? result.score : 'N/A'} ·
-                    Attendance: ${result.attendance}%
+                    Attendance: ${result.attendance ?? 0}%
                 </p>
             </div>
         `;

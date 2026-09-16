@@ -423,6 +423,11 @@ body {
   cursor: pointer;
 }
 
+.nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
 .status-pill {
   font-size: 12px;
   padding: 4px 12px;
@@ -473,6 +478,7 @@ body {
   font-size: 12px;
   color: #6b6b6b;
 }
+
 
 /* Mobile responsiveness */
 @media (max-width: 768px) {
@@ -550,4 +556,9 @@ body {
   .footer {
     padding: 1.5rem 1rem;
   }
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
 }

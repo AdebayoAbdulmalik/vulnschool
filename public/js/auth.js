@@ -18,9 +18,16 @@ if (loginForm) {
           
             localStorage.setItem('token', data.token);
             localStorage.setItem('role', data.role);
+             errorEl.style.color = '#27500A';
+            errorEl.style.background = '#EAF3DE';
+            errorEl.style.border = '0.5px solid #c3e6a0';
+            errorEl.textContent = 'Login successful! Redirecting...';
+            errorEl.style.display = 'block';
+
+            setTimeout(() => { window.location.href = '/dashboard'; }, 1000);
 
             
-            window.location.href = 'dashboard.html';
+           
         } else {
             
             errorEl.textContent = data.message || 'Login failed';
@@ -42,8 +49,13 @@ if (registerForm) {
         const data = await apiRequest('POST', '/auth/register', { name, email, password }, false);
 
         if (data._status === 201) {
-            
-            window.location.href = 'login';
+            errorEl.style.color = '#27500A';
+            errorEl.style.background = '#EAF3DE';
+            errorEl.style.border = '0.5px solid #c3e6a0';
+            errorEl.textContent = 'Account created! Redirecting to login...';
+            errorEl.style.display = 'block';
+
+            setTimeout(() => { window.location.href = '/login'; }, 1500);
         } else {
             errorEl.textContent = data.message || 'Registration failed';
             errorEl.style.display = 'block';

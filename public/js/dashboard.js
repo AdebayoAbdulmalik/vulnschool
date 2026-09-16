@@ -54,10 +54,15 @@ async function loadCourses() {
             row.appendChild(pill);
         } else {
             const btn = document.createElement('button');
-            btn.className = 'course-action-btn';
-            btn.textContent = 'Register';
-            btn.addEventListener('click', () => registerForCourse(course._id));
-            row.appendChild(btn);
+                btn.className = 'course-action-btn';
+                btn.textContent = 'Register';
+                btn.addEventListener('click', async () => {
+                btn.textContent = 'Registering...';
+                btn.disabled = true;
+                await registerForCourse(course._id);
+                btn.textContent = 'Register';
+                btn.disabled = false;
+            });
         }
 
         courseListEl.appendChild(row);
@@ -79,7 +84,14 @@ async function registerForCourse(courseId) {
     const data = await apiRequest('POST', `/courses/${courseId}/register`, { userId }, true);
 
     if (data._status === 200) {
-        loadCourses();
+        courseErrorEl.style.color = '#27500A';
+        courseErrorEl.style.background = '#EAF3DE';
+        courseErrorEl.textContent = 'Successfully registered for course!';
+        courseErrorEl.style.display = 'block';
+        setTimeout(() => {
+            courseErrorEl.style.display = 'none';
+            loadCourses();
+        }, 1500);
     } else {
         courseErrorEl.textContent = data.message || 'Failed to register for course';
         courseErrorEl.style.display = 'block';
