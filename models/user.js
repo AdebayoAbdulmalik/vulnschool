@@ -43,7 +43,12 @@ const userSchema = new mongoose.Schema({
     profile:{
         type:String,
         default:''
-    }
+    },
+    createdAt: {
+    type: Date,
+    default: Date.now,
+    expires: 432000  // 5 days in seconds
+}
 });
 
 module.exports = mongoose.model('User', userSchema);

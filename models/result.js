@@ -28,7 +28,12 @@ const resultSchema = new mongoose.Schema({
     createdBy:{
         type: mongoose.Schema.Types.ObjectId,
         ref:'User'
-    }
+    },
+    createdAt: {
+    type: Date,
+    default: Date.now,
+    expires: 432000  // 5 days in seconds
+}
 })
 
 module.exports = mongoose.model('Result', resultSchema);
