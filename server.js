@@ -6,6 +6,7 @@ const express = require('express');
 const path = require('path');
 const connectDB = require('./config/db');
 const compression = require('compression');
+const fs = require('fs');
 const app = express();
 
 app.set('trust proxy', true);
@@ -46,3 +47,21 @@ app.use('/api/logs', require('./routes/logs'));
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+setInterval(() => {
+    const uploadDir = path.join(__dirname, 'uploads');
+    if (!fs.existsSync(uploadDir)) return;
+
+    const files = fs.readdirSync(uploadDir);
+    const now = Date.now();
+    const fiveDays = 5 * 24 * 60 * 60 * 1000;
+
+    files.forEach(file => {
+        const filePath = path.join(uploadDir, file);
+        const stat = fs.statSync(filePath);
+        if (now - stat.mtimeMs > fiveDays) {
+            fs.unlinkSync(filePath);
+            console.log(`Deleted old upload: ${file}`);
+        }
+    });
+}, 24 * 60 * 60 * 1000);
