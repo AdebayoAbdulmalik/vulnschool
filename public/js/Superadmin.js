@@ -10,17 +10,17 @@ const token = localStorage.getItem('token');
 const role = localStorage.getItem('role');
 
 if (!token) {
-    window.location.href = 'login';
-}
-
-if (role !== 'super_admin') {
-    window.location.href = 'login';
+    window.location.href = '/login';
+} else if (role !== 'super_admin') {
+    window.location.href = '/login';
+} else {
+    document.getElementById('page-wrap').style.display = 'block';
 }
 
 logoutBtn.addEventListener('click', () => {
     localStorage.removeItem('token');
     localStorage.removeItem('role');
-    window.location.href = 'login.html';
+    window.location.href = 'login';
 });
 
 async function loadUsers() {
