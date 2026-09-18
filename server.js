@@ -24,6 +24,14 @@ pages.forEach(page => {
         res.sendFile(path.join(__dirname, 'public', `${page}.html`));
     });
 });
+const cors = require('cors');
+
+app.use(cors({
+    origin: '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'x-soc-password']
+}));
+app.options('*', cors());
 
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/students', require('./routes/user'));
