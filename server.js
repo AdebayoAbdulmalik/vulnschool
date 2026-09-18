@@ -5,7 +5,7 @@ require('dotenv').config({ path: './.env.student' });
 const express = require('express');
 const path = require('path');
 const connectDB = require('./config/db');
-
+const compression = require('compression');
 const app = express();
 
 app.set('trust proxy', true);
@@ -15,7 +15,7 @@ connectDB();
 
 const logger = require('./middleware/logger');
 app.use(logger);
-
+app.use(compression());
 app.use(express.json());
 
 const pages = ['dashboard', 'login', 'register', 'profile', 'results', 'admin', 'superadmin', 'soc','About', 'Contact'];
@@ -36,7 +36,10 @@ app.options('/{*path}', cors());
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/students', require('./routes/user'));
 app.use('/api/courses', require('./routes/course'));
-app.use(express.static('public'));
+app.use(express.static('public', {
+    maxAge: '1d',              
+    etag: true
+}));
 app.use('/api/upload', require('./routes/upload'));
 app.use('/api/results', require('./routes/results'));
 app.use('/api/logs', require('./routes/logs'));

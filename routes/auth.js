@@ -3,7 +3,7 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
-const SALT_ROUNDS = 12;
+const SALT_ROUNDS = 10;
 const JWT_SECRET = process.env.JWT_SECRET;
 
 
