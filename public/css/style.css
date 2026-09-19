@@ -514,6 +514,15 @@ body {
   .two-col {
     grid-template-columns: 1fr;
   }
+  .hamburger {
+  display: none;
+  background: none;
+  border: none;
+  color: #1D3A5F;
+  font-size: 22px;
+  cursor: pointer;
+  padding: 4px 8px;
+ }
 }
 
 
@@ -612,5 +621,26 @@ body {
   }
   .page-section {
     padding: 2rem 1.25rem;
-}
+  }
+    .hamburger {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 68px;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    border-bottom: 0.5px solid #e5e3dc;
+    flex-direction: column;
+    padding: 1rem 1.5rem;
+    gap: 1rem;
+    z-index: 999;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
 }
