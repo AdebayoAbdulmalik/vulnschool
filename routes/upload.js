@@ -20,6 +20,17 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage });
+router.get('/debug', auth, (req, res) => {
+    const uploadDir = path.join(__dirname, '../uploads');
+    const exists = fs.existsSync(uploadDir);
+    const files = exists ? fs.readdirSync(uploadDir) : [];
+    res.json({ 
+        uploadDir, 
+        exists, 
+        files,
+        cwd: process.cwd()
+    });
+});
 router.post('/profile-picture', auth, upload.single('picture'), async (req, res) => {
     try {
         if (!req.file) {
@@ -39,6 +50,7 @@ router.post('/profile-picture', auth, upload.single('picture'), async (req, res)
         res.status(500).json({ message: 'Upload failed' });
     }
 });
+
 
 router.get('/file', auth, (req, res) => {
     const filename = req.query.name;
