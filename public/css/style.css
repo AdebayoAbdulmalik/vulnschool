@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -561,8 +562,8 @@ body {
     align-items: center;
     justify-content: center;
     gap: 4px;
-    color: rgba(255,255,255,0.55);
-    text-decoration: none;
+    color: rgba(255,255,255,0.55) !important; /* Forces white/grey text */
+    text-decoration: none !important; /* Removes the blue underline */
     font-size: 11px;
   }
 
@@ -571,12 +572,12 @@ body {
   }
 
   .bottom-nav a.active {
-    color: #C6942A;
+    color: #C6942A !important; /* Forces the gold active color */
   }
 
   /* Keeps page content from hiding behind the bar */
   body.has-bottom-nav {
-    padding-bottom: calc(72px + env(safe-area-inset-bottom));
+    padding-bottom: calc(90px + env(safe-area-inset-bottom)) !important; /* Increased to 90px so footer isn't hidden */
   }
 
   /* Landing page */
