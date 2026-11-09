@@ -517,16 +517,15 @@ body {
 }
 
 
+.bottom-nav { display: none; }
 
 /* Mobile responsiveness */
 @media (max-width: 768px) {
 
+  /* Top bar: logo + button only, links move to the bottom tab bar */
   .nav {
-    padding: 0 1rem;
-    flex-wrap: wrap;
+    padding: 10px 1rem;
     height: auto;
-    padding-top: 12px;
-    padding-bottom: 12px;
     gap: 10px;
     position: sticky;
     top: 0;
@@ -537,8 +536,53 @@ body {
     display: none;
   }
 
+  .nav-cta {
+    padding: 8px 14px;
+  }
+
+  /* Bottom tab bar (injected by js/bottomnav.js) */
+  .bottom-nav {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: calc(64px + env(safe-area-inset-bottom));
+    padding-bottom: env(safe-area-inset-bottom);
+    background: #1D3A5F;
+    border-top: 0.5px solid rgba(255,255,255,0.12);
+    z-index: 1000;
+  }
+
+  .bottom-nav a {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+    font-size: 11px;
+  }
+
+  .bottom-nav a i {
+    font-size: 18px;
+  }
+
+  .bottom-nav a.active {
+    color: #C6942A;
+  }
+
+  /* Keeps page content from hiding behind the bar */
+  body.has-bottom-nav {
+    padding-bottom: calc(72px + env(safe-area-inset-bottom));
+  }
+
+  /* Landing page */
   .hero {
     grid-template-columns: 1fr;
+    min-height: auto;
     max-height: none;
   }
 
@@ -550,6 +594,10 @@ body {
     font-size: 36px;
   }
 
+  .hero-actions {
+    flex-wrap: wrap;
+  }
+
   .hero-right {
     padding: 2rem 1.5rem;
   }
@@ -559,11 +607,22 @@ body {
     padding: 0 1rem;
   }
 
-  .stat-item {
+  .stat-item,
+  .stat-item:not(:first-child),
+  .stat-item:last-child {
     flex: 1 1 45%;
     padding: 1rem 0.5rem;
     border-right: none;
     border-bottom: 0.5px solid #e5e3dc;
+  }
+
+  /* App pages */
+  .auth-wrap {
+    padding: 1.5rem 1rem;
+  }
+
+  .auth-card {
+    max-width: 100% !important;
   }
 
   .dash-wrap {
@@ -582,10 +641,6 @@ body {
     gap: 10px;
   }
 
-  .auth-card {
-    max-width: 100% !important;
-  }
-
   .two-col {
     grid-template-columns: 1fr;
   }
@@ -594,8 +649,9 @@ body {
     grid-template-columns: 1fr 1fr;
   }
 
-  .footer {
-    padding: 1.5rem 1rem;
+  /* About and Contact pages */
+  .page-section {
+    padding: 2rem 1.25rem;
   }
 
   #about, #contact {
@@ -610,7 +666,8 @@ body {
     flex-direction: column;
     gap: 1rem !important;
   }
-  .page-section {
-    padding: 2rem 1.25rem;
- }
+
+  .footer {
+    padding: 1.5rem 1rem;
+  }
 }
