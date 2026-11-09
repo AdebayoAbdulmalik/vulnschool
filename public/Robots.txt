@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /superadmin
+Disallow: /dashboard
+Disallow: /profile
+Disallow: /results
+Disallow: /soc
+
+Sitemap: https://vulnschool.onrender.com/sitemap.xml
