@@ -7,6 +7,7 @@ const path = require('path');
 const connectDB = require('./config/db');
 const compression = require('compression');
 const fs = require('fs');
+const helmet = require('helmet');
 const app = express();
 
 app.set('trust proxy', true);
