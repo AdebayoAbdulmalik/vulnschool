@@ -1,0 +1,11 @@
+# VulnSchool
+
+> An intentionally vulnerable web application built for security research, penetration testing practice, and learning ethical hacking.
+
+## Links
+- [Home](https://vulnschool.onrender.com/): The main landing page.
+- [Labs](https://vulnschool.onrender.com/labs): A list of practice vulnerabilities (XSS, SQLi, etc.).
+- [About](https://vulnschool.onrender.com/About): About the creator and the project.
+
+## Purpose
+This site is a free educational platform for African cybersecurity students.
